@@ -1,10 +1,10 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from "react"
+import { Text, View } from "react-native"
 
 export function Home() {
-  return (
-    <View>
-      <Text>Spotlight Home</Text>
-    </View>
-  );
+    return (
+        <View>
+            <Text>Spotlight Home</Text>
+        </View>
+    )
 }
