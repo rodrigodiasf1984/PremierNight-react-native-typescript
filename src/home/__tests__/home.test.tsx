@@ -13,7 +13,7 @@ jest.mock("../../repositories/moviesRepository", () => ({
 describe("Home", () => {
     beforeEach(() => {
         jest.clearAllMocks()
-        ;(movieRepository.fetchPopular as jest.Mock).mockResolvedValue({
+        ;(movieRepository?.fetchPopular as jest.Mock)?.mockResolvedValue({
             results: []
         })
     })
