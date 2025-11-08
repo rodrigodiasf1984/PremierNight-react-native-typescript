@@ -1,0 +1,9 @@
+node_modules
+build
+dist
+android
+ios
+package.json
+package-lock.json
+*.min.js
+*.bundle.js
