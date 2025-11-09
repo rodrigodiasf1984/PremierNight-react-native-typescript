@@ -13,7 +13,7 @@ A small cross-platform app to help curators discover films and create a watchlis
 
 ## Tech & prerequisites
 
-    * the --legacy-peer-deps is mandatory because the react-native-fast-image@8.6.3 (which doesn't support React 19.x due to its peer requirement of React ^17 || ^18),
+    * you must execute => npm run install --legacy-peer-deps is mandatory because the react-native-fast-image@8.6.3 (which doesn't support React 19.x due to its peer requirement of React ^17 || ^18),
 
     * the app doesn't compile for android, there is a problem with the cmake, some library aren't compatible with the react version 19, i need more time to check the problems, try to fix it or downgrade the version of react.
 
