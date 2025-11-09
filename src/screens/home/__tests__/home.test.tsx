@@ -11,7 +11,7 @@ jest.mock("../../../repositories/moviesRepository", () => ({
     )
 }))
 
-jest.mock("../hooks/useDetailsNavigation", () => ({
+jest.mock("../../details/hooks/useDetailsNavigation", () => ({
     useDetailsNavigation: () => ({
         openMovieDetails: jest.fn()
     })
