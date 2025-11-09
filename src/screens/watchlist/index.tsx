@@ -1,10 +1,12 @@
 import React from "react"
 import { Text, View } from "react-native"
 
-export function Home() {
+export function Watchlist() {
     return (
         <View>
-            <Text>Spotlight Home</Text>
+            <Text>Watchlist</Text>
         </View>
     )
 }
+
+export default Watchlist
