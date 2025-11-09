@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 import { MovieCard } from "../../components/movie-card"
 import { Movie } from "../../domain/types"
-import { useDetailsNavigation } from "./hooks/useDetailsNavigation"
+import { useDetailsNavigation } from "../details/hooks/useDetailsNavigation"
 import { useHomeViewModel } from "./hooks/useHomeViewModel"
 import { LegendListSection } from "./legend-list-section"
 import { styles } from "./styles"

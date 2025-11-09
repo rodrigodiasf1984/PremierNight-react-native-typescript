@@ -15,7 +15,6 @@ const Details = () => {
     const movieId = route.params.id
 
     const { movie, isSaved, toggleWatchlist } = useDetailViewModel(movieId)
-    console.log("✅ ~  movie Details:", movie)
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={{ padding: 16 }}>
