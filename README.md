@@ -65,6 +65,10 @@ Add unit tests for hooks/viewmodels (mock repository).
 
 Add accessible animations and fine-tune layout on tablets.
 
+Add tailwindCSS to speed development.
+
+Add detox for E2E.
+
 Notes for reviewers
 
 Home -> tap a poster -> opens Detail.
