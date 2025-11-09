@@ -8,9 +8,7 @@ import { useWatchlist } from "../../../store/watchlistStore"
 export const useDetailViewModel = (movieId: number) => {
     const [movie, setMovie] = useState<MovieDetail | null>(null)
     const [loading, setLoading] = useState(false)
-    const addMovie = useWatchlist(m => m.add)
-    const removeMovie = useWatchlist(m => m.remove)
-    const hasMovie = useWatchlist(m => m.has)
+    const { add, has, remove } = useWatchlist()
 
     useEffect(() => {
         let mounted = true
@@ -38,18 +36,19 @@ export const useDetailViewModel = (movieId: number) => {
 
     const toggleWatchlist = useCallback(() => {
         if (!movie) return
-        if (hasMovie(movie.id)) {
-            removeMovie(movie.id)
+        if (has(movie.id)) {
+            remove(movie.id)
         } else {
             const movieToAdd = {
                 id: movie.id,
                 title: movie.title,
-                poster_path: movie.poster_path
+                poster_path: movie.poster_path,
+                homepage: movie.homepage
             }
-            addMovie(movieToAdd)
+            add(movieToAdd)
         }
-    }, [movie, hasMovie, addMovie, removeMovie])
-    const isSaved = movie ? hasMovie(movieId) : false
+    }, [movie, has, add, remove])
+    const isSaved = movie ? has(movieId) : false
 
     return {
         movie,

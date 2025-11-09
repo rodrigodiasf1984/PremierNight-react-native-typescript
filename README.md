@@ -1,97 +1,79 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Premiere Night
 
-# Getting Started
+## Summary
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+A small cross-platform app to help curators discover films and create a watchlist. Uses TMDb as the data source.
 
-## Step 1: Start Metro
+## What’s included
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- Home screen with horizontal carousel (popular movies)
+- Detail screen with poster, synopsis, release date, genres
+- Watchlist screen with add/remove and persistence (Zustand + AsyncStorage)
+- Layered structure: api, domain, repositories, store, hooks (viewmodels), screens, components, navigation and utils
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Tech & prerequisites
 
-```sh
-# Using npm
-npm start
+    * the --legacy-peer-deps is mandatory because the react-native-fast-image@8.6.3 (which doesn't support React 19.x due to its peer requirement of React ^17 || ^18),
 
-# OR using Yarn
-yarn start
-```
+    * the app doesn't compile for android, there is a problem with the cmake, some library aren't compatible with the react version 19, i need more time to check the problems, try to fix it or downgrade the version of react.
 
-## Step 2: Build and run your app
+- Node 16+ (or as required by RN version)
+- npm or yarn
+- Xcode (macOS) for iOS, Android Studio for Android
+- React Native CLI (bare RN project)
+- Install dependencies:
+    ```bash
+    npm install --legacy-peer-deps
+    cd ios && pod install && cd ..
+    ```
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## TMDb API key
 
-### Android
+- Create a .env file in the project root:
+- MOVIES_API_KEY = you api key from https://www.themoviedb.org/
 
-```sh
-# Using npm
-npm run android
+Run the app (example)
 
-# OR using Yarn
-yarn android
-```
+iOS:
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
 npm run ios
 
-# OR using Yarn
-yarn ios
-```
+## Architecture & design decisions
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Eslint, prettier and husky for code standars, thi husky run the scripts:
+-npm test,
+-npm run check-format,
+so if the unit tests fails you need to fix them before trying to commit.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Zustand chosen for simple and testable local state (watchlist). Persist middleware with AsyncStorage to satisfy the persistence bonus.
 
-## Step 3: Modify your app
+Repository pattern (movieRepository) isolates network layer.
 
-Now that you have successfully run the app, let's make changes!
+View-model hooks (useHomeViewModel, useDetailViewModel,useDetailsNavigation ) encapsulate side effects and keep screens focused on rendering.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Performance: LegendList with stable keys, useCallback and useMemo to avoid re-renders. Poster images are cached by the native image loader; swap in react-native-fast-image for improved caching if desired.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Trade-offs: Due to time, focus was on functionality and clean separation — advanced transitions (Reanimated coverflow) were left as a nice-to-have.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Outstanding / next steps
 
-## Congratulations! :tada:
+Add more robust error UI and retry flows.
 
-You've successfully run and modified your React Native App. :partying_face:
+Improve image caching (fast-image), add shimmer placeholders.
 
-### Now what?
+Add unit tests for hooks/viewmodels (mock repository).
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Add accessible animations and fine-tune layout on tablets.
 
-# Troubleshooting
+Add tailwindCSS to speed development.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Add detox for E2E.
 
-# Learn More
+Notes for reviewers
 
-To learn more about React Native, take a look at the following resources:
+Home -> tap a poster -> opens Detail.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+From Detail, tap Add / Remove to persist the movie in the Watchlist.
+
+Watchlist persists across app launches,
+in the watchlist when you tap the poster image, if the movie has an url from netflix example: https://www.netflix.com/title/81507921, the app tries to open the netflix app with deeplinking otherwise the website will be open.

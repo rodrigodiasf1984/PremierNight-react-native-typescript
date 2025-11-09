@@ -1,9 +1,8 @@
+import { MOVIES_API_KEY } from "@env"
 import axios from "axios"
-import Config from "react-native-config"
 
 import { MovieDetail, MovieListResponse } from "../domain/types"
 
-const API_KEY = Config.MOVIES_API_KEY
 const baseUrl = "https://api.themoviedb.org/3"
 
 type FetchCategoryProps = {
@@ -16,14 +15,14 @@ export async function fetchCategory({
     page
 }: FetchCategoryProps): Promise<MovieListResponse> {
     const { data } = await axios.get(`${baseUrl}/movie/${category}`, {
-        params: { api_key: API_KEY, page }
+        params: { api_key: MOVIES_API_KEY, page }
     })
     return data
 }
 
 export async function fetchMovieDetails(movieId: number): Promise<MovieDetail> {
     const { data } = await axios.get(`${baseUrl}/movie/${movieId}`, {
-        params: { api_key: API_KEY, append_to_response: "credits" }
+        params: { api_key: MOVIES_API_KEY, append_to_response: "credits" }
     })
     return data
 }

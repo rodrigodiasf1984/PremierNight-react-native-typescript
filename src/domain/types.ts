@@ -7,6 +7,7 @@ export type Movie = {
     overview?: string
     release_date?: string
     genre_ids?: number[]
+    homepage: string
 }
 
 export type MovieListResponse = {
@@ -23,4 +24,5 @@ export type MovieDetail = {
     overview: string
     release_date: string
     genres: Genre[]
+    homepage: string
 }
