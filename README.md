@@ -13,7 +13,7 @@ A small cross-platform app to help curators discover films and create a watchlis
 
 ## Tech & prerequisites
 
-    * the --legacy-peer-deps is mandatory because the react-native-fast-image@8.6.3 (which doesn't support React 19.x due to its peer requirement of React ^17 || ^18),
+    * you must execute => npm run install --legacy-peer-deps is mandatory because the react-native-fast-image@8.6.3 (which doesn't support React 19.x due to its peer requirement of React ^17 || ^18),
 
     * the app doesn't compile for android, there is a problem with the cmake, some library aren't compatible with the react version 19, i need more time to check the problems, try to fix it or downgrade the version of react.
 
@@ -53,9 +53,11 @@ View-model hooks (useHomeViewModel, useDetailViewModel,useDetailsNavigation ) en
 
 Performance: LegendList with stable keys, useCallback and useMemo to avoid re-renders. Poster images are cached by the native image loader; swap in react-native-fast-image for improved caching if desired.
 
-Trade-offs: Due to time, focus was on functionality and clean separation — advanced transitions (Reanimated coverflow) were left as a nice-to-have.
+# Trade-offs:
 
-Outstanding / next steps
+Due to time, focus was on functionality and clean separation — advanced transitions (Reanimated coverflow) were left as a nice-to-have.
+
+# Outstanding / next steps
 
 Add more robust error UI and retry flows.
 
@@ -69,7 +71,7 @@ Add tailwindCSS to speed development.
 
 Add detox for E2E.
 
-Notes for reviewers
+# Notes for reviewers
 
 Home -> tap a poster -> opens Detail.
 
