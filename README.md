@@ -71,6 +71,8 @@ Add Tailwind CSS to speed development.
 
 Add detox for E2E.
 
+Add pagination to  the results of api when the carousel is near the latest movies, I can update the page + 1 to get more results.
+
 # Notes for reviewers
 
 Home -> tap a poster -> opens Detail.
@@ -88,6 +90,6 @@ In the watchlist, when you tap the poster image, if the movie has a URL from Net
    <img width="206" height="622" alt="simulator_screenshot_B27A9F28-6107-4E5F-8BCB-A8497B70E142" src="https://github.com/user-attachments/assets/91e7b76c-7bb7-4598-ab1c-e555e45fe850" />
    <img width="206" height="622" alt="simulator_screenshot_82998165-A38F-44DA-89BE-FB0D4F0ED9E7" src="https://github.com/user-attachments/assets/4de0211f-c5fe-4047-9ac5-f1498f078ebe" />
    <img width="206" height="622" alt="simulator_screenshot_601FDE72-9F04-477D-9B3A-84A74917F01C" src="https://github.com/user-attachments/assets/e93938a6-8782-41fb-88b8-c52b3c33c6f8" />
-      <img width="206" height="622" alt="simulator_screenshot_8FACCB13-6EE3-4F74-A7C0-1A9A727FDBB9" src="https://github.com/user-attachments/assets/6b2aca3b-917e-4ff8-8fd7-611a8ade0671" />
-      <img width="206" height="622" alt="simulator_screenshot_4EF2E56B-7BA7-48BE-A783-37D793A2D1E3" src="https://github.com/user-attachments/assets/0a4f19ef-de89-4614-b193-3cace8470dac" />
+   <img width="206" height="622" alt="simulator_screenshot_8FACCB13-6EE3-4F74-A7C0-1A9A727FDBB9" src="https://github.com/user-attachments/assets/6b2aca3b-917e-4ff8-8fd7-611a8ade0671" />
+   <img width="206" height="622" alt="simulator_screenshot_4EF2E56B-7BA7-48BE-A783-37D793A2D1E3" src="https://github.com/user-attachments/assets/0a4f19ef-de89-4614-b193-3cace8470dac" />
 </div>
